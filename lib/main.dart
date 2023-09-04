@@ -1,50 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/splash_screen/view_model/splash_view_model.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp( const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+   const MyApp({super.key});
 
-  
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+ 
+
+class _MyAppState extends State<MyApp> {
+  final splashViewModel = SplashScreenViewModel();
+
+  @override
+  void initState(){
+    super.initState();
+
+    Future.delayed(const Duration(seconds: 3)).then((value) {
+      // Add login page
+      //Navigator.pushReplacement(context, MaterialPageRoute(builder: (contex)=>LoginPage));
+    });
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Food App',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: splashViewModel.buildSplashScreen(context), 
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
 
 
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        
-      ),
-      
-    );
-  }
-}
