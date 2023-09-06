@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:food_app/main_screen/view/main_screen_view.dart';
 import 'package:food_app/main_screen/view_model/main_screen_view_model.dart';
 
 
