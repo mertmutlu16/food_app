@@ -86,4 +86,5 @@ class _DetailScreenViewState extends State<DetailScreenView> {
       onTap: _onItemTapped,
     );
   }
+
 }
