@@ -5,7 +5,6 @@ import 'package:food_app/splash_screen/view/splash_screen_view.dart';
 import 'package:flutter/services.dart';
 import 'package:food_app/utils/extentions/scroll_behavior.dart';
 import 'package:food_app/utils/locator.dart';
-import 'package:food_app/utils/navigation_service.dart';
 import 'package:food_app/utils/routes/app_router.dart';
 import 'package:food_app/utils/routes/app_routes.dart';
 import 'package:get/get_navigation/get_navigation.dart';
@@ -19,7 +18,6 @@ void main() {
 class MyApp extends StatelessWidget {
    MyApp({super.key});
 
-  NavigationService navigationService = NavigationService();
 
   
   @override
@@ -34,6 +32,7 @@ class MyApp extends StatelessWidget {
       builder: (context, orientation, deviceType) {
         return GetMaterialApp(
           scrollBehavior: CustomScrollBehavior(),
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -44,19 +43,7 @@ class MyApp extends StatelessWidget {
           unknownRoute: AppRoutes.unknownRoute,
         );
         
-        
-      /*  MaterialApp(
-           
-          title: 'Food APP',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
-          ),
-          home:const  SplashScreenView(),
-          
-        );*/
+
       }
     );
   }

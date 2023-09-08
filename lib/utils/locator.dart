@@ -9,7 +9,7 @@ import 'package:get_it/get_it.dart';
 void setupLocater(){
   locator.registerLazySingleton<MainScreenViewModel>(() => MainScreenViewModel());
   /// To Do...
-  /// locator.registerLazySingleton<LoginScreenViewModel>(() => LoginScreenViewModel());
+  locator.registerLazySingleton<LoginScreenViewModel>(() => LoginScreenViewModel());
 
   
 

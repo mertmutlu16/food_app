@@ -1,7 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:food_app/detail_screen/view/detail_screen_view.dart';
+import 'package:food_app/utils/routes/app_routes.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+
 
 class ExploreMenuArea extends StatefulWidget {
   const ExploreMenuArea({
@@ -61,11 +63,7 @@ class _ExploreMenuAreaState extends State<ExploreMenuArea> {
                             width: 35.w,
                             child: GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const DetailScreenView()));
+                                Get.toNamed(AppRoutes.DETAIL_SCREEN_PATH);
                               },
                               child: Card(
                                 shape: RoundedRectangleBorder(

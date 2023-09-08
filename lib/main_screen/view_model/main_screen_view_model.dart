@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:food_app/main_screen/view/main_screen_view.dart';
+import 'package:mobx/mobx.dart';
+part 'main_screen_view_model.g.dart';
 
-class MainScreenViewModel {
+class MainScreenViewModel = _MainScreenViewModelBase with _$MainScreenViewModel;
 
-
-  Widget buildingMainScreen(BuildContext context){
-    return MainScreenView();
-  }
+abstract class _MainScreenViewModelBase with Store {
+  
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/atomic_widgets.dart/food_app_divider.dart';
+import 'package:food_app/atomic_widgets/food_app_divider.dart';
 import 'package:food_app/detail_screen/view/widgets/order_description_area.dart';
 import 'package:food_app/detail_screen/view/widgets/order_title_area.dart';
 

@@ -1,9 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:food_app/detail_screen/view/detail_screen_view.dart';
-import 'package:food_app/utils/locator.dart';
-import 'package:food_app/utils/navigation_service.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+
+import '../../../utils/routes/app_routes.dart';
 
 class ReccomendationMenuArea extends StatefulWidget {
   const ReccomendationMenuArea({
@@ -62,7 +62,8 @@ class _ReccomendationMenuAreaState extends State<ReccomendationMenuArea> {
                   itemBuilder: (context, index) {
                     return GestureDetector(
                       onTap: () {
-                    //    getit<NavigationService>().navigateTo('/second');
+                        Get.toNamed(AppRoutes.DETAIL_SCREEN_PATH);
+                        
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(

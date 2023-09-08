@@ -1,8 +1,13 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:food_app/login_screen/view/widgets/email_input_area.dart';
+import 'package:food_app/login_screen/view/widgets/next_page_button.dart';
+import 'package:food_app/login_screen/view/widgets/password_input_area.dart';
 import 'package:food_app/main_screen/view_model/main_screen_view_model.dart';
-
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/get_navigation.dart';
+import '../../utils/routes/app_routes.dart';
 
 class LoginScreenView extends StatefulWidget {
   const LoginScreenView({super.key});
@@ -15,85 +20,36 @@ class _LoginScreenViewState extends State<LoginScreenView> {
   MainScreenViewModel mainScreenViewModel = MainScreenViewModel();
   bool isObscured = false;
   TextEditingController passwordController = TextEditingController();
+
+  void toggleObscurePassword() {
+    setState(() {
+      isObscured = !isObscured;
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(12.0),
           child: Column(
-            
             children: [
-              SizedBox(
-                height: 70,
-              ),
-              Container(
-                alignment: Alignment.centerLeft,
-                child: Text( "E-posta ve Şifreniz ile giriş yapın", 
-                  style: TextStyle(
-                    fontSize: 20 ,
-                    fontWeight: FontWeight.bold,),
-                ),
-              ),
-              
-              SizedBox(
-                height: 20,
-              ),
 
-              TextField(              
-                decoration: InputDecoration(
-                  labelText: "E-posta" ,
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black54),
-                  ),
-                  
-                  ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              TextField(              
+
+              EmailInputArea(),
+              PasswordInputArea(
                 controller: passwordController,
-                obscureText: isObscured ? false : true,
-                decoration: InputDecoration(
-                  labelText: "Şifre" ,
-                  border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.black54),
-                  ),
-                  suffixIcon:GestureDetector(
-                    onTap: (){
-                      setState(() {
-                        isObscured = !isObscured;
-                        
-                      });
-                    },
-                    child : isObscured ? Icon(Icons.visibility) : Icon(Icons.visibility_off),
-                  ) 
-                  ),
-              ),
-              Container(
-                alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.only(top: 8),
-                child: Text("Şifremi unuttum" , style: const TextStyle(color: Color.fromARGB(1000,241,0,77) ,fontSize: 16),)),
-              Spacer(),
-              ElevatedButton(
-                onPressed: (){
-                  // Will be changed later . Trial edition
-                  Navigator.push(context, 
-                  MaterialPageRoute(builder: (context)=>mainScreenViewModel.buildingMainScreen(context)));
+                isObscured: isObscured,
+                onToggleObscure: () {
+                  setState(() {
+                    isObscured = !isObscured;
+                  });
                 },
-
-              style: ElevatedButton.styleFrom(
-                minimumSize: Size(double.infinity, 50),
-                backgroundColor:  Color.fromARGB(1000,241,0,77),
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
               ),
-                child: const Text("Devam et"),
-              )
-              
+              const Spacer(),
+              LoginNextPageButton()
             ],
           ),
         ),
