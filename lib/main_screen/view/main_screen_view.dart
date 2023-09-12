@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:food_app/main_screen/view/widgets/explore_menu_area.dart';
 import 'package:food_app/main_screen/view/widgets/reccomendation_menu_area.dart';
 import 'package:food_app/main_screen/view/widgets/search_area.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+
+import '../../utils/routes/app_routes.dart';
 
 class MainScreenView extends StatefulWidget {
   const MainScreenView({super.key});
@@ -25,9 +28,21 @@ class _MainScreenViewState extends State<MainScreenView> {
 
   
   int _selectedBottomNaviIndex =0;
-  void _onItemTapped(int index) {
+ void _onItemTapped(int index) {
     setState(() {
       _selectedBottomNaviIndex = index;
+
+      switch (_selectedBottomNaviIndex) {
+        case 0:
+          Get.toNamed(AppRoutes.MAIN_SCREEN_PATH);
+        case 1:
+          Get.toNamed(AppRoutes.FAVORITES_SCREEN_PATH);
+         
+          break;
+        default:
+      }
+      
+      
     });
   }
 

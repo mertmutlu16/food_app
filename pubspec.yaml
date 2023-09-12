@@ -71,6 +71,8 @@ flutter:
     - images/splashMotobike.png
     - images/main_screen_image-removebg.png
     - images/hamburger.jpeg
+    - images/food.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

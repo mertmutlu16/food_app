@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/atomic_widgets/food_app_divider.dart';
-import 'package:food_app/detail_screen/view/widgets/order_description_area.dart';
-import 'package:food_app/detail_screen/view/widgets/order_title_area.dart';
-import 'package:food_app/favorites_screen/view/favorites_view_screen.dart';
+import 'package:food_app/favorites_screen/view/widgets/card_area.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
 import '../../utils/routes/app_routes.dart';
 
-
-class DetailScreenView extends StatefulWidget {
-  const DetailScreenView({super.key});
+class FavoritesScreenView extends StatefulWidget {
+  const FavoritesScreenView({super.key});
 
   @override
-  State<DetailScreenView> createState() => _DetailScreenViewState();
+  State<FavoritesScreenView> createState() => _FavoritesScreenViewState();
 }
 
-class _DetailScreenViewState extends State<DetailScreenView> {
-  int _selectedBottomNaviIndex = 0;
+class _FavoritesScreenViewState extends State<FavoritesScreenView> {
+  int _selectedBottomNaviIndex = 1;
   void _onItemTapped(int index) {
     setState(() {
       _selectedBottomNaviIndex = index;
@@ -36,43 +30,37 @@ class _DetailScreenViewState extends State<DetailScreenView> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: buildAppBar(context),
       body: buildBody(),
       bottomNavigationBar: buildBottomNavigatorBar(),
     );
   }
 
-  AppBar buildAppBar(BuildContext context) {
+
+
+  AppBar buildAppBar(BuildContext context){
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      leading: IconButton(
-          onPressed: () {
-            Get.back();
-          },
-          icon: const Icon(Icons.arrow_back)),
+      leading:IconButton(
+        onPressed: (){
+          Get.back();
+        },
+        icon: const Icon(Icons.arrow_back)),
+        centerTitle: true,
+        title: const Text("Favorites" , style: TextStyle(fontWeight: FontWeight.bold ), ),
     );
   }
 
-  Widget buildBody() {
-    return Center(
-      child: Column(
-        children: [
-          Image.asset("images/hamburger.jpeg"),
-          const Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              OrderTitleArea(),
-              FoodAppDivider(),
-              OrderDescriptionArea()
-            ],
-          ),
-        ],
-      ),
+  Widget buildBody(){
+    return const Column(
+      children: [
+        CardArea(),
+      ],
     );
   }
 

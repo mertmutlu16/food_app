@@ -10,6 +10,7 @@ void setupLocater(){
   locator.registerLazySingleton<MainScreenViewModel>(() => MainScreenViewModel());
   /// To Do...
   locator.registerLazySingleton<LoginScreenViewModel>(() => LoginScreenViewModel());
+  
 
   
 
