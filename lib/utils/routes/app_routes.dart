@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:food_app/atomic_widgets/error_screen.dart';
+import 'package:food_app/card_screen/view/card_screen_view.dart';
 import 'package:food_app/detail_screen/view/detail_screen_view.dart';
 import 'package:food_app/favorites_screen/view/favorites_view_screen.dart';
 import 'package:food_app/login_screen/view/login_screen_view.dart';
@@ -17,7 +18,9 @@ class AppRoutes {
   static const MAIN_SCREEN_PATH = "/mainScreenPath";
   static const DETAIL_SCREEN_PATH = "/detailScreenView";
   static const FAVORITES_SCREEN_PATH = "/favoritesScreenView";
+  static const CARD_SCREEN_PATH = "/cardScreenPath";
   static const ERROR_SCREEN_PATH = "/errorScreenPath";
+  
 
   static GetPage getPage(Widget Function() widgetFn, String path,
       {Transition? transition, List<GetPage>? children}) {
@@ -36,6 +39,8 @@ class AppRoutes {
     getPage(() => const MainScreenView(), MAIN_SCREEN_PATH),
     getPage(() => const DetailScreenView(), DETAIL_SCREEN_PATH),
     getPage(() => const FavoritesScreenView(), FAVORITES_SCREEN_PATH),
+    getPage(() => const CardScreenView(), CARD_SCREEN_PATH),
+
 
     unknownRoute
   ];
