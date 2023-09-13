@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/card_screen/view/widgets/card_area.dart';
-import 'package:food_app/card_screen/view/widgets/order_button.dart';
+import 'package:food_app/profile_screen/view/widgets/profile_card_area.dart';
+import 'package:food_app/profile_screen/view/widgets/user_define_area.dart';
 import 'package:get/get.dart';
 
 import '../../utils/routes/app_routes.dart';
 
-class CardScreenView extends StatefulWidget {
-  const CardScreenView({super.key});
+class ProfileScreenView extends StatefulWidget {
+  const ProfileScreenView({super.key});
 
   @override
-  State<CardScreenView> createState() => _CardScreenViewState();
+  State<ProfileScreenView> createState() => _ProfileScreenViewState();
 }
 
-class _CardScreenViewState extends State<CardScreenView> {
-  int _selectedBottomNaviIndex = 2;
+class _ProfileScreenViewState extends State<ProfileScreenView> {
+  
+
+  
+  int _selectedBottomNaviIndex = 3;
   void _onItemTapped(int index) {
     setState(() {
       _selectedBottomNaviIndex = index;
@@ -28,44 +31,48 @@ class _CardScreenViewState extends State<CardScreenView> {
           break;
         case 3:
           Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);
+          break;
         default:
       }
+      
+      
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
-      body: buildBody(),
+      appBar:buildAppBar(),
+      body:buildBody(),
       bottomNavigationBar: buildBottomNavigationBar(),
     );
+
+
   }
 
-  AppBar buildAppBar() {
+
+  AppBar buildAppBar(){
     return AppBar(
-      title: const Text(
-        "Card",
-        style: TextStyle(fontWeight: FontWeight.bold),
-      ),
+      title: const  Text("Profile" , style: TextStyle(fontWeight: FontWeight.bold),),
       centerTitle: true,
-      leading: IconButton(
-        onPressed: () {
+      leading: IconButton(onPressed: (){
           Get.back();
-        },
-        icon: const Icon(Icons.arrow_back),
-      ),
+      },
+      icon: const Icon(Icons.arrow_back), ),
     );
   }
 
-  Widget buildBody() {
+
+  Widget buildBody(){
     return const Column(
       children: [
-        CardArea(),
-        OrderButton(),
+        UserDefineArea(),
+        ProfileCardArea(),
+ 
       ],
     );
   }
+
 
   Widget buildBottomNavigationBar() {
     return BottomNavigationBar(
@@ -94,4 +101,5 @@ class _CardScreenViewState extends State<CardScreenView> {
       onTap: _onItemTapped,
     );
   }
+
 }

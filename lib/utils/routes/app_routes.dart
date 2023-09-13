@@ -10,6 +10,8 @@ import 'package:food_app/main_screen/view/main_screen_view.dart';
 import 'package:food_app/splash_screen/view/splash_screen_view.dart';
 import 'package:get/get.dart';
 
+import '../../profile_screen/view/profile_screen_view.dart';
+
 class AppRoutes {
   static const Transition _transition = Transition.native;
   static const Duration _transitionDuration = Duration(milliseconds: 500);
@@ -19,6 +21,7 @@ class AppRoutes {
   static const DETAIL_SCREEN_PATH = "/detailScreenView";
   static const FAVORITES_SCREEN_PATH = "/favoritesScreenView";
   static const CARD_SCREEN_PATH = "/cardScreenPath";
+  static const PROFILE_SCREEN_PATH = "/profileScreenPath";
   static const ERROR_SCREEN_PATH = "/errorScreenPath";
   
 
@@ -40,6 +43,8 @@ class AppRoutes {
     getPage(() => const DetailScreenView(), DETAIL_SCREEN_PATH),
     getPage(() => const FavoritesScreenView(), FAVORITES_SCREEN_PATH),
     getPage(() => const CardScreenView(), CARD_SCREEN_PATH),
+    getPage(() => const ProfileScreenView(), PROFILE_SCREEN_PATH),
+
 
 
     unknownRoute

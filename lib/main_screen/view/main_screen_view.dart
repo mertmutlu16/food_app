@@ -40,6 +40,8 @@ class _MainScreenViewState extends State<MainScreenView> {
         
         case 2:
           Get.toNamed(AppRoutes.CARD_SCREEN_PATH);
+        case 3:
+          Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);
          
           break;
         default:

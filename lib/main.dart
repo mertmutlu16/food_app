@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/detail_screen/view/detail_screen_view.dart';
-import 'package:food_app/main_screen/view/main_screen_view.dart';
-import 'package:food_app/splash_screen/view/splash_screen_view.dart';
 import 'package:flutter/services.dart';
 import 'package:food_app/utils/extentions/scroll_behavior.dart';
 import 'package:food_app/utils/locator.dart';

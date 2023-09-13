@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../utils/routes/app_routes.dart';
 
@@ -23,14 +24,14 @@ class _LoginNextPageButtonState extends State<LoginNextPageButton> {
                 AppRoutes.MAIN_SCREEN_PATH, (route) => false);
           },
           style: ElevatedButton.styleFrom(
-            minimumSize: const Size(double.infinity, 50),
+            minimumSize:  Size(double.infinity, 8.h),
             backgroundColor: const Color.fromARGB(1000, 241, 0, 77),
             foregroundColor: Colors.white,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
             ),
           ),
-          child: const Text("Devam et"),
+          child: const Text("Continue"),
         ),
       ],
     );

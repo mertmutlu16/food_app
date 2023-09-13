@@ -13,7 +13,7 @@ class _SearchAreaState extends State<SearchArea> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:  EdgeInsets.only(top: .5.h, bottom: .5.h ),
+      padding:  EdgeInsets.only(top: .5.h, bottom: .5.h , left: 1.h,right: 1.h),
       child: SizedBox(
         height: 10.h,
         child: Column(
