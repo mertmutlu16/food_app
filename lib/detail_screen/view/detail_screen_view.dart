@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:food_app/atomic_widgets/food_app_divider.dart';
 import 'package:food_app/detail_screen/view/widgets/order_description_area.dart';
 import 'package:food_app/detail_screen/view/widgets/order_title_area.dart';
-import 'package:food_app/favorites_screen/view/favorites_view_screen.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../utils/routes/app_routes.dart';
 
@@ -60,6 +59,18 @@ class _DetailScreenViewState extends State<DetailScreenView> {
             Get.back();
           },
           icon: const Icon(Icons.arrow_back)),
+      actions: [
+        Padding(
+          padding:  EdgeInsets.only(right: 1.h),
+          child: IconButton(
+            onPressed: (){},
+             icon: const Icon(Icons.favorite_outline),
+             color: const Color.fromARGB(1000, 241, 0, 77),
+             iconSize: 4.h,
+             ),
+        )
+      ],
+          
     );
   }
 

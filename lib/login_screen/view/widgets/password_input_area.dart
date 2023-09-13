@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
 class PasswordInputArea extends StatefulWidget {
@@ -5,7 +7,7 @@ class PasswordInputArea extends StatefulWidget {
   final bool isObscured;
   final Function() onToggleObscure;
 
-  PasswordInputArea({
+  const PasswordInputArea({
     required this.controller,
     required this.isObscured,
     required this.onToggleObscure,

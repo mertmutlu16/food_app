@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
@@ -15,8 +14,7 @@ class ReccomendationMenuArea extends StatefulWidget {
 }
 
 class _ReccomendationMenuAreaState extends State<ReccomendationMenuArea> {
-
-   var foods = [
+  var foods = [
     "Hamburger",
     "Makarna",
     "Tost",
@@ -27,12 +25,10 @@ class _ReccomendationMenuAreaState extends State<ReccomendationMenuArea> {
     "Makarna"
   ];
 
-
   @override
   Widget build(BuildContext context) {
-
     return Padding(
-      padding:  EdgeInsets.all(.8.h),
+      padding: EdgeInsets.all(.8.h),
       child: SizedBox(
         height: 45.h,
         width: double.infinity,
@@ -63,7 +59,6 @@ class _ReccomendationMenuAreaState extends State<ReccomendationMenuArea> {
                     return GestureDetector(
                       onTap: () {
                         Get.toNamed(AppRoutes.DETAIL_SCREEN_PATH);
-                        
                       },
                       child: Card(
                         shape: RoundedRectangleBorder(

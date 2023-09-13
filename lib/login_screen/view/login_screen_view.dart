@@ -5,9 +5,7 @@ import 'package:food_app/login_screen/view/widgets/email_input_area.dart';
 import 'package:food_app/login_screen/view/widgets/next_page_button.dart';
 import 'package:food_app/login_screen/view/widgets/password_input_area.dart';
 import 'package:food_app/main_screen/view_model/main_screen_view_model.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import '../../utils/routes/app_routes.dart';
+
 
 class LoginScreenView extends StatefulWidget {
   const LoginScreenView({super.key});

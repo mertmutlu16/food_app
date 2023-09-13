@@ -48,8 +48,9 @@ class _OrderDescriptionAreaState extends State<OrderDescriptionArea> {
         Padding(
           padding: EdgeInsets.all(3.h),
           child: const Text(
-              " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make "),
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis dui a risus malesuada ullamcorper id quis velit. Donec commodo, eros id cursus molestie, mi eros suscipit sem, vel interdum."),
         ),
+
         Padding(
           padding: EdgeInsets.all(2.h),
           child: Row(

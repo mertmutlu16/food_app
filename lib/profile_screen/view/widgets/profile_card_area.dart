@@ -19,8 +19,8 @@ class _ProfileCardAreaState extends State<ProfileCardArea> {
             child: Column(
               children: [
                 ListTile(
-                  leading: Icon(Icons.settings , color: Color.fromARGB(1000, 241, 0, 77),),
-                  title: Text("Profile Settings"),
+                  leading: const Icon(Icons.settings , color: Color.fromARGB(1000, 241, 0, 77),),
+                  title: const Text("Profile Settings"),
                   onTap: (){},
                 ),
                 Container(
@@ -28,18 +28,8 @@ class _ProfileCardAreaState extends State<ProfileCardArea> {
                   color: Colors.white,
                 ),
                 ListTile(
-                  leading: Icon(Icons.shopping_bag_outlined , color: Color.fromARGB(1000, 241, 0, 77),),
-                  title: Text("My Orders"),
-                  onTap: (){},
-        
-                ),
-                Container(
-                  height: 1.h,
-                  color: Colors.white,
-                ),
-                ListTile(
-                  leading: Icon(Icons.location_on_outlined , color: Color.fromARGB(1000, 241, 0, 77),),
-                  title: Text("My Adresses"),
+                  leading: const Icon(Icons.shopping_bag_outlined , color: Color.fromARGB(1000, 241, 0, 77),),
+                  title: const Text("My Orders"),
                   onTap: (){},
         
                 ),
@@ -48,8 +38,8 @@ class _ProfileCardAreaState extends State<ProfileCardArea> {
                   color: Colors.white,
                 ),
                 ListTile(
-                  leading: Icon(Icons.credit_card_outlined , color: Color.fromARGB(1000, 241, 0, 77),),
-                  title: Text("Saved Cards"),
+                  leading: const Icon(Icons.location_on_outlined , color: Color.fromARGB(1000, 241, 0, 77),),
+                  title: const Text("My Adresses"),
                   onTap: (){},
         
                 ),
@@ -58,8 +48,18 @@ class _ProfileCardAreaState extends State<ProfileCardArea> {
                   color: Colors.white,
                 ),
                 ListTile(
-                  leading: Icon(Icons.language_outlined , color: Color.fromARGB(1000, 241, 0, 77),),
-                  title: Text("Language"),
+                  leading: const Icon(Icons.credit_card_outlined , color: Color.fromARGB(1000, 241, 0, 77),),
+                  title: const Text("Saved Cards"),
+                  onTap: (){},
+        
+                ),
+                Container(
+                  height: 1.h,
+                  color: Colors.white,
+                ),
+                ListTile(
+                  leading: const Icon(Icons.language_outlined , color: Color.fromARGB(1000, 241, 0, 77),),
+                  title: const Text("Language"),
                   onTap: (){},
         
                 ),
@@ -68,8 +68,8 @@ class _ProfileCardAreaState extends State<ProfileCardArea> {
                   color: Colors.white,
                 ),
                 ListTile(
-                  leading: Icon(Icons.help_outline , color: Color.fromARGB(1000, 241, 0, 77),),
-                  title: Text("Help"),
+                  leading: const Icon(Icons.help_outline , color: Color.fromARGB(1000, 241, 0, 77),),
+                  title: const Text("Help"),
                   onTap: (){},
         
                 ),
@@ -78,8 +78,8 @@ class _ProfileCardAreaState extends State<ProfileCardArea> {
                   color: Colors.white,
                 ),
                 ListTile(
-                  leading: Icon(Icons.logout_outlined , color: Color.fromARGB(1000, 241, 0, 77),),
-                  title: Text("Log out"),
+                  leading: const Icon(Icons.logout_outlined , color: Color.fromARGB(1000, 241, 0, 77),),
+                  title: const Text("Log out"),
                   onTap: (){},
         
                 ),
