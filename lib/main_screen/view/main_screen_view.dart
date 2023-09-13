@@ -39,7 +39,7 @@ class _MainScreenViewState extends State<MainScreenView> {
           Get.toNamed(AppRoutes.FAVORITES_SCREEN_PATH);
         
         case 2:
-          Get.toNamed(AppRoutes.CARD_SCREEN_PATH);
+          Get.toNamed(AppRoutes.SHOPPING_CARD_SCREEN_PATH);
         case 3:
           Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);
          

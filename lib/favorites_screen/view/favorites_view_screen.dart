@@ -22,7 +22,7 @@ class _FavoritesScreenViewState extends State<FavoritesScreenView> {
         case 1:
           Get.toNamed(AppRoutes.FAVORITES_SCREEN_PATH);
         case 2:
-          Get.toNamed(AppRoutes.CARD_SCREEN_PATH);
+          Get.toNamed(AppRoutes.SHOPPING_CARD_SCREEN_PATH);
           break;
         case 3:
           Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);

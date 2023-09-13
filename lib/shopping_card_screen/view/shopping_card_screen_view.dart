@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:food_app/card_screen/view/widgets/card_area.dart';
-import 'package:food_app/card_screen/view/widgets/order_button.dart';
+import 'package:food_app/shopping_card_screen/view/widgets/card_area.dart';
+import 'package:food_app/shopping_card_screen/view/widgets/order_button.dart';
 import 'package:get/get.dart';
 
 import '../../utils/routes/app_routes.dart';
 
-class CardScreenView extends StatefulWidget {
-  const CardScreenView({super.key});
+class ShoppingCardScreenView extends StatefulWidget {
+  const ShoppingCardScreenView({super.key});
 
   @override
-  State<CardScreenView> createState() => _CardScreenViewState();
+  State<ShoppingCardScreenView> createState() => _ShoppingCardScreenViewState();
 }
 
-class _CardScreenViewState extends State<CardScreenView> {
+class _ShoppingCardScreenViewState extends State<ShoppingCardScreenView> {
   int _selectedBottomNaviIndex = 2;
   void _onItemTapped(int index) {
     setState(() {
@@ -24,7 +24,7 @@ class _CardScreenViewState extends State<CardScreenView> {
         case 1:
           Get.toNamed(AppRoutes.FAVORITES_SCREEN_PATH);
         case 2:
-          Get.toNamed(AppRoutes.CARD_SCREEN_PATH);
+          Get.toNamed(AppRoutes.SHOPPING_CARD_SCREEN_PATH);
           break;
         case 3:
           Get.toNamed(AppRoutes.PROFILE_SCREEN_PATH);
