@@ -48,7 +48,7 @@ class _OrderDescriptionAreaState extends State<OrderDescriptionArea> {
         Padding(
           padding: EdgeInsets.all(3.h),
           child: const Text(
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis dui a risus malesuada ullamcorper id quis velit. Donec commodo, eros id cursus molestie, mi eros suscipit sem, vel interdum."),
+              "   Lezzetli ve doyurucu bir kebap. Taze kuzu eti, sebzeler ve özel baharatlar ile hazırlanır"),
         ),
 
         Padding(

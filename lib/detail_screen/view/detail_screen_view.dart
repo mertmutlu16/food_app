@@ -84,7 +84,8 @@ class _DetailScreenViewState extends State<DetailScreenView> {
             children: [
               OrderTitleArea(),
               FoodAppDivider(),
-              OrderDescriptionArea()
+              OrderDescriptionArea(),
+              //ItemCounter(),
             ],
           ),
         ],
