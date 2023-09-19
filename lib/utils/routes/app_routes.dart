@@ -24,6 +24,7 @@ class AppRoutes {
   static const PROFILE_SCREEN_PATH = "/profileScreenPath";
   static const ERROR_SCREEN_PATH = "/errorScreenPath";
   
+  
 
   static GetPage getPage(Widget Function() widgetFn, String path,
       {Transition? transition, List<GetPage>? children}) {
@@ -40,11 +41,13 @@ class AppRoutes {
     getPage(() => const SplashScreenView(), INIT_PATH),
     getPage(() => const LoginScreenView(), LOGIN_SCREEN_PATH),
     getPage(() => const MainScreenView(), MAIN_SCREEN_PATH),
-    getPage(() => const DetailScreenView(), DETAIL_SCREEN_PATH),
+    getPage(() =>  DetailScreenView(incomingId : Get.arguments), DETAIL_SCREEN_PATH),
     getPage(() => const FavoritesScreenView(), FAVORITES_SCREEN_PATH),
     getPage(() => const ShoppingCardScreenView(), SHOPPING_CARD_SCREEN_PATH),
     getPage(() => const ProfileScreenView(), PROFILE_SCREEN_PATH),
 
+
+    
 
 
     unknownRoute

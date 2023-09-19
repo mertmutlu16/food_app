@@ -26,7 +26,7 @@ class _PasswordInputAreaState extends State<PasswordInputArea> {
           controller: widget.controller,
           obscureText: widget.isObscured ? false : true,
           decoration: InputDecoration(
-            labelText: "Şifre",
+            labelText: "Password",
             border: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.black54),
             ),
@@ -42,7 +42,7 @@ class _PasswordInputAreaState extends State<PasswordInputArea> {
             alignment: Alignment.centerLeft,
             padding: const EdgeInsets.only(top: 8),
             child: const Text(
-              "Şifremi unuttum",
+              "forgot password?",
               style: TextStyle(
                   color: Color.fromARGB(1000, 241, 0, 77), fontSize: 16),
             )),

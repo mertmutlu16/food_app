@@ -1,61 +1,100 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:food_app/detail_screen/view_model/detail_screen_view_model.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../utils/locator.dart';
+
 class OrderTitleArea extends StatefulWidget {
-  const OrderTitleArea({super.key});
+  final int incomingId;
+  const OrderTitleArea({super.key, required this.incomingId});
 
   @override
   State<OrderTitleArea> createState() => _OrderTitleAreaState();
 }
 
 class _OrderTitleAreaState extends State<OrderTitleArea> {
+  
+  final detailScreenViewModel = locator<DetailScreenViewModel>();
+
+  bool isInit = true;
+
+  @override
+  void didChangeDependencies() async {
+    if (isInit) {
+      await detailScreenViewModel
+          .getSingleFood(widget.incomingId)
+          .catchError((err) {
+        debugPrint(err);
+      });
+      isInit = false;
+      setState(() {});
+    }
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.all(1.h),
-      child: Column(
-        children: [
-          const Text(
-            "Hot Burger",
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+    return Observer(builder: (_) {
+      return Visibility(
+        visible: !isInit,
+        replacement: const Center(
+          child: CircularProgressIndicator(
+            valueColor:
+                AlwaysStoppedAnimation<Color>(Color.fromARGB(1000, 241, 0, 77)),
           ),
-          SizedBox(
-            height: 1.h,
-          ),
-          const Text(
-            "Burger Burger Burger Burger Burger",
-            style: TextStyle(fontSize: 14),
-          ),
-          Padding(
-            padding: EdgeInsets.only(top: 2.h, bottom: 2.h),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Row(
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(1.h),
+          child: Column(
+            children: [
+              Text(
+                detailScreenViewModel.singleFood?.foodName ?? '-',
+                style:
+                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(
+                height: 1.h,
+              ),
+              Text(
+                detailScreenViewModel.singleFood?.ingredients ?? '-',
+                style: const TextStyle(fontSize: 14),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 2.h, bottom: 2.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    const Icon(
-                      Icons.star,
-                      color: Color.fromARGB(1000, 244, 0, 77),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.star,
+                          color: Color.fromARGB(1000, 244, 0, 77),
+                        ),
+                        SizedBox(
+                          width: 2.w,
+                        ),
+                        Text(
+                          "${detailScreenViewModel.singleFood!.rating}",
+                        ),
+                      ],
                     ),
-                    SizedBox(
-                      width: 2.w,
-                    ),
-                    const Text("4.5"),
+                    ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(1000, 241, 0, 77),
+                          foregroundColor: Colors.white,
+                          elevation: 10,
+                        ),
+                        child: const Text("Sepete Ekle")),
                   ],
                 ),
-                ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color.fromARGB(1000, 241, 0, 77),
-                      foregroundColor: Colors.white,
-                      elevation: 10,
-                    ),
-                    child: const Text("Sepete Ekle")),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
-    );
+        ),
+      );
+    });
   }
 }

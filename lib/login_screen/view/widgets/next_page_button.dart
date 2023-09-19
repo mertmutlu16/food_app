@@ -33,7 +33,7 @@ class _LoginNextPageButtonState extends State<LoginNextPageButton> {
               borderRadius: BorderRadius.circular(10),
             ),
           ),
-          child: const Text("Continue"),
+          child: const Text("Sign in"),
         ),
       ],
     );

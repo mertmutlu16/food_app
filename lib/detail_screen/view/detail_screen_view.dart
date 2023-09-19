@@ -1,3 +1,5 @@
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables
+
 import 'package:flutter/material.dart';
 import 'package:food_app/atomic_widgets/food_app_divider.dart';
 import 'package:food_app/detail_screen/view/widgets/order_description_area.dart';
@@ -9,8 +11,11 @@ import '../../utils/routes/app_routes.dart';
 
 
 class DetailScreenView extends StatefulWidget {
-  const DetailScreenView({super.key});
+  final int incomingId ;
 
+  DetailScreenView({ required this.incomingId});
+
+  
   @override
   State<DetailScreenView> createState() => _DetailScreenViewState();
 }
@@ -79,12 +84,12 @@ class _DetailScreenViewState extends State<DetailScreenView> {
       child: Column(
         children: [
           Image.asset("images/hamburger.jpeg"),
-          const Column(
+            Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              OrderTitleArea(),
-              FoodAppDivider(),
-              OrderDescriptionArea(),
+              OrderTitleArea(incomingId: widget.incomingId),
+              const FoodAppDivider(),
+              OrderDescriptionArea(incomingId: widget.incomingId),
               //ItemCounter(),
             ],
           ),

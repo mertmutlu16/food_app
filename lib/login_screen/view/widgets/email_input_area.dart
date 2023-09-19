@@ -21,7 +21,7 @@ class _EmailInputAreaState extends State<EmailInputArea> {
         Container(
           alignment: Alignment.centerLeft,
           child: const Text(
-            "E-posta ve Şifreniz ile giriş yapın",
+            "Login with your E-mail and Password",
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -33,7 +33,7 @@ class _EmailInputAreaState extends State<EmailInputArea> {
         ),
         const TextField(
           decoration: InputDecoration(
-            labelText: "E-posta",
+            labelText: "E-mail",
             border: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.black54),
             ),

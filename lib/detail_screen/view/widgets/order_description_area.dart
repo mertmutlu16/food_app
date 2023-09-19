@@ -1,97 +1,139 @@
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables
+
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../utils/locator.dart';
+import '../../view_model/detail_screen_view_model.dart';
+
 class OrderDescriptionArea extends StatefulWidget {
-  const OrderDescriptionArea({super.key});
+  final int incomingId;
+  OrderDescriptionArea({ required this.incomingId});
 
   @override
   State<OrderDescriptionArea> createState() => _OrderDescriptionAreaState();
 }
 
 class _OrderDescriptionAreaState extends State<OrderDescriptionArea> {
+
+  final detailScreenViewModel = locator<DetailScreenViewModel>();
+
+  bool isInit = true;
+
+  @override
+  void didChangeDependencies() async {
+    if (isInit) {
+      await detailScreenViewModel
+          .getSingleFood(widget.incomingId)
+          .catchError((err) {
+        debugPrint(err);
+      });
+      isInit = false;
+      setState(() {});
+    }
+    super.didChangeDependencies();
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.only(top: 2.h),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text(
-                "Cook Time",
-                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
-              ),
-              Text(
-                "Preparation Time",
-                style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
-              ),
-            ],
+    return Observer(
+      builder : (_){
+
+      return Visibility(
+        visible: !isInit,
+        replacement: const Center(
+          child: CircularProgressIndicator(
+            valueColor:
+                AlwaysStoppedAnimation<Color>(Color.fromARGB(1000, 241, 0, 77)),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.only(top: .7.h),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Text(
-                "20m",
-                style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400),
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(top: 2.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "Cook Time",
+                    style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    "Preparation Time",
+                    style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
-              Text(
-                "25m",
-                style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: .7.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    "${detailScreenViewModel.singleFood!.cookTime}m",
+                    style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400),
+                  ),
+                  Text(
+                    "${detailScreenViewModel.singleFood!.servingTime}m",
+                    style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400),
+                  ),
+                ],
               ),
-            ],
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.all(3.h),
-          child: const Text(
-              "   Lezzetli ve doyurucu bir kebap. Taze kuzu eti, sebzeler ve özel baharatlar ile hazırlanır"),
-        ),
-
-        Padding(
-          padding: EdgeInsets.all(2.h),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(
-                onPressed: () {},
-                icon: Ink(
-                  decoration: const ShapeDecoration(
-                    shape: CircleBorder(),
-                    color: Colors.pink,
+            ),
+            Padding(
+              padding: EdgeInsets.all(3.h),
+              child:  Text(
+                  detailScreenViewModel.singleFood?.description ?? '-'
                   ),
-                  child: const Icon(
-                    Icons.remove,
-                    color: Colors.white,
+            ),
+          
+            Padding(
+              padding: EdgeInsets.all(2.h),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: Ink(
+                      decoration: const ShapeDecoration(
+                        shape: CircleBorder(),
+                        color: Colors.pink,
+                      ),
+                      child: const Icon(
+                        Icons.remove,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
-                ),
+          
+                  const Text(
+                    "0",
+                    style: TextStyle(fontSize: 20),
+                  ), //productCount
+          
+                  IconButton(
+                    onPressed: () {},
+                    icon: Ink(
+                      decoration: const ShapeDecoration(
+                        shape: CircleBorder(),
+                        color: Colors.pink,
+                      ),
+                      child: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                      ),
+                    ),
+                  )
+                ],
               ),
-
-              const Text(
-                "0",
-                style: TextStyle(fontSize: 20),
-              ), //productCount
-
-              IconButton(
-                onPressed: () {},
-                icon: Ink(
-                  decoration: const ShapeDecoration(
-                    shape: CircleBorder(),
-                    color: Colors.pink,
-                  ),
-                  child: const Icon(
-                    Icons.add,
-                    color: Colors.white,
-                  ),
-                ),
-              )
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
+      );}
     );
   }
 }
