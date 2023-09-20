@@ -37,15 +37,7 @@ class _LoginScreenViewState extends State<LoginScreenView> {
 
 
               EmailInputArea(),
-              PasswordInputArea(
-                controller: passwordController,
-                isObscured: isObscured,
-                onToggleObscure: () {
-                  setState(() {
-                    isObscured = !isObscured;
-                  });
-                },
-              ),
+              PasswordInputArea(),
               const Spacer(),
               LoginNextPageButton()
             ],

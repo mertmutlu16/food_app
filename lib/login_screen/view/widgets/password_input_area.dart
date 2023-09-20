@@ -1,43 +1,48 @@
 // ignore_for_file: use_key_in_widget_constructors, library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+
+import '../../../utils/locator.dart';
+import '../../view_model/login_screen_view_model.dart';
 
 class PasswordInputArea extends StatefulWidget {
-  final TextEditingController controller;
-  final bool isObscured;
-  final Function() onToggleObscure;
-
-  const PasswordInputArea({
-    required this.controller,
-    required this.isObscured,
-    required this.onToggleObscure,
-  });
-
   @override
   _PasswordInputAreaState createState() => _PasswordInputAreaState();
 }
 
 class _PasswordInputAreaState extends State<PasswordInputArea> {
+  final loginScreenViewModel = locator<LoginScreenViewModel>();
+
+  bool isObscured = false;
+  void toggleObscurePassword() {
+    setState(() {
+      isObscured = !isObscured;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TextField(
-          controller: widget.controller,
-          obscureText: widget.isObscured ? false : true,
-          decoration: InputDecoration(
-            labelText: "Password",
-            border: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.black54),
+        Observer(builder: (_) {
+          return TextField(
+            controller: loginScreenViewModel.passwordTextController,
+            obscureText: isObscured ? false : true,
+            decoration: InputDecoration(
+              labelText: "Password",
+              border: const OutlineInputBorder(
+                borderSide: BorderSide(color: Colors.black54),
+              ),
+              suffixIcon: GestureDetector(
+                onTap: toggleObscurePassword,
+                child: isObscured
+                    ? const Icon(Icons.visibility)
+                    : const Icon(Icons.visibility_off),
+              ),
             ),
-            suffixIcon: GestureDetector(
-              onTap: widget.onToggleObscure,
-              child: widget.isObscured
-                  ? const Icon(Icons.visibility)
-                  : const Icon(Icons.visibility_off),
-            ),
-          ),
-        ),
+          );
+        }),
         Container(
             alignment: Alignment.centerLeft,
             padding: const EdgeInsets.only(top: 8),
