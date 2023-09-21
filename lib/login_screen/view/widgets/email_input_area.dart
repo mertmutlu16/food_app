@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-
+import 'package:sizer/sizer.dart';
 import '../../../utils/locator.dart';
 import '../../view_model/login_screen_view_model.dart';
 
@@ -22,21 +22,21 @@ class _EmailInputAreaState extends State<EmailInputArea> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(
-          height: 70,
+         SizedBox(
+          height: 9.h,
         ),
         Container(
           alignment: Alignment.centerLeft,
-          child: const Text(
+          child:  Text(
             "Login with your E-mail and Password",
             style: TextStyle(
-              fontSize: 20,
+              fontSize: 15.4.sp,
               fontWeight: FontWeight.bold,
             ),
           ),
         ),
-        const SizedBox(
-          height: 20,
+         SizedBox(
+          height: 2.6.h,
         ),
         Observer(builder: (_) {
           return TextField(
@@ -49,8 +49,8 @@ class _EmailInputAreaState extends State<EmailInputArea> {
             ),
           );
         }),
-        const SizedBox(
-          height: 20,
+         SizedBox(
+          height: 2.5.h,
         ),
       ],
     );

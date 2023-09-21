@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../utils/locator.dart';
 import '../../view_model/login_screen_view_model.dart';
@@ -45,12 +46,13 @@ class _PasswordInputAreaState extends State<PasswordInputArea> {
         }),
         Container(
             alignment: Alignment.centerLeft,
-            padding: const EdgeInsets.only(top: 8),
-            child: const Text(
+            padding:  EdgeInsets.only(top: 1.h),
+            child:  Text(
               "forgot password?",
               style: TextStyle(
-                  color: Color.fromARGB(1000, 241, 0, 77), fontSize: 16),
+                  color: const Color.fromARGB(1000, 241, 0, 77), fontSize: 13.sp),
             )),
+        
       ],
     );
   }

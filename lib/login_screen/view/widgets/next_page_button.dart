@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:food_app/login_screen/model/apis/user_verification_api.dart';
 import 'package:food_app/login_screen/view_model/login_screen_view_model.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
@@ -10,33 +9,24 @@ import 'package:sizer/sizer.dart';
 import '../../../utils/routes/app_routes.dart';
 import '../../../utils/locator.dart';
 
-
 class LoginNextPageButton extends StatefulWidget {
   @override
   State<LoginNextPageButton> createState() => _LoginNextPageButtonState();
 }
 
 class _LoginNextPageButtonState extends State<LoginNextPageButton> {
-
   final loginScreenViewModel = locator<LoginScreenViewModel>();
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   @override
-  void didChangeDependencies()  {
-
-    
+  void didChangeDependencies() {
     emailController = loginScreenViewModel.getEmailController();
     passwordController = loginScreenViewModel.getPasswordController();
-  
 
     super.didChangeDependencies();
   }
-  
-
-
-
 
   void _showEmptyFieldsAlert() {
     showDialog(
@@ -63,18 +53,38 @@ class _LoginNextPageButtonState extends State<LoginNextPageButton> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        Padding(
+          padding:  EdgeInsets.only(bottom: 3.h),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Don't have an account ?",
+                style: TextStyle(fontSize: 14.sp),
+              ),
+              GestureDetector(
+                onTap: (){
+                 Get.toNamed(AppRoutes.SIGNUP_SCREEN_PATH);
+                },
+                  child: Text(
+                " Sign up",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
+              )),
+            ],
+          ),
+        ),
+
         Observer(builder: (_) {
           return ElevatedButton(
-            onPressed: () async{
+            onPressed: () async {
               if (emailController.text.isNotEmpty &&
                   passwordController.text.isNotEmpty) {
-                await   loginScreenViewModel.getUser(emailController.text.toString(), passwordController.text.toString()).then((value){
-                    print("  USER DATA  : ${value?.email??'-'}");
-                });
-                  print("  USER DATA  :  ${loginScreenViewModel.user?.email}");
-                  print("  ");
-                 Get.offNamedUntil(AppRoutes.MAIN_SCREEN_PATH, (route) => false);
 
+                await loginScreenViewModel
+                    .getUser(emailController.text.toString(),
+                        passwordController.text.toString())
+                    .then((value) {});
+                Get.offNamedUntil(AppRoutes.MAIN_SCREEN_PATH, (route) => false);
               } else {
                 _showEmptyFieldsAlert();
               }

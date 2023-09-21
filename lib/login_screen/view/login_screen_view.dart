@@ -1,11 +1,10 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:sizer/sizer.dart';
 import 'package:food_app/login_screen/view/widgets/email_input_area.dart';
 import 'package:food_app/login_screen/view/widgets/next_page_button.dart';
 import 'package:food_app/login_screen/view/widgets/password_input_area.dart';
-import 'package:food_app/main_screen/view_model/main_screen_view_model.dart';
-
 
 class LoginScreenView extends StatefulWidget {
   const LoginScreenView({super.key});
@@ -15,15 +14,6 @@ class LoginScreenView extends StatefulWidget {
 }
 
 class _LoginScreenViewState extends State<LoginScreenView> {
-  MainScreenViewModel mainScreenViewModel = MainScreenViewModel();
-  bool isObscured = false;
-  TextEditingController passwordController = TextEditingController();
-
-  void toggleObscurePassword() {
-    setState(() {
-      isObscured = !isObscured;
-    });
-  }
 
 
   @override
@@ -31,7 +21,7 @@ class _LoginScreenViewState extends State<LoginScreenView> {
     return Scaffold(
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: EdgeInsets.all(1.5.h),
           child: Column(
             children: [
 

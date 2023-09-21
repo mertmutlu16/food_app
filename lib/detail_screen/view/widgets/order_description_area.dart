@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables, body_might_complete_normally_catch_error
 
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';

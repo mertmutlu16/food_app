@@ -43,6 +43,30 @@ mixin _$LoginScreenViewModel on _LoginScreenViewModelBase, Store {
     });
   }
 
+  late final _$userAtom =
+      Atom(name: '_LoginScreenViewModelBase.user', context: context);
+
+  @override
+  Users? get user {
+    _$userAtom.reportRead();
+    return super.user;
+  }
+
+  @override
+  set user(Users? value) {
+    _$userAtom.reportWrite(value, super.user, () {
+      super.user = value;
+    });
+  }
+
+  late final _$getUserAsyncAction =
+      AsyncAction('_LoginScreenViewModelBase.getUser', context: context);
+
+  @override
+  Future<Users?> getUser(String email, String password) {
+    return _$getUserAsyncAction.run(() => super.getUser(email, password));
+  }
+
   late final _$_LoginScreenViewModelBaseActionController =
       ActionController(name: '_LoginScreenViewModelBase', context: context);
 
@@ -72,7 +96,8 @@ mixin _$LoginScreenViewModel on _LoginScreenViewModelBase, Store {
   String toString() {
     return '''
 emailTextController: ${emailTextController},
-passwordTextController: ${passwordTextController}
+passwordTextController: ${passwordTextController},
+user: ${user}
     ''';
   }
 }

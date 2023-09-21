@@ -6,6 +6,7 @@ import 'package:food_app/shopping_card_screen/view/shopping_card_screen_view.dar
 import 'package:food_app/detail_screen/view/detail_screen_view.dart';
 import 'package:food_app/favorites_screen/view/favorites_view_screen.dart';
 import 'package:food_app/login_screen/view/login_screen_view.dart';
+import 'package:food_app/signup_screen/view/signup_screen_view.dart';
 import 'package:food_app/main_screen/view/main_screen_view.dart';
 import 'package:food_app/splash_screen/view/splash_screen_view.dart';
 import 'package:get/get.dart';
@@ -17,6 +18,7 @@ class AppRoutes {
   static const Duration _transitionDuration = Duration(milliseconds: 500);
   static const INIT_PATH = "/splashScreenPath";
   static const LOGIN_SCREEN_PATH = "/loginScreenPath";
+  static const SIGNUP_SCREEN_PATH = "/signupScreenPath";
   static const MAIN_SCREEN_PATH = "/mainScreenPath";
   static const DETAIL_SCREEN_PATH = "/detailScreenView";
   static const FAVORITES_SCREEN_PATH = "/favoritesScreenView";
@@ -40,6 +42,7 @@ class AppRoutes {
   static final get_routes = <GetPage>[
     getPage(() => const SplashScreenView(), INIT_PATH),
     getPage(() => const LoginScreenView(), LOGIN_SCREEN_PATH),
+    getPage(() => const SignupScreenView(), SIGNUP_SCREEN_PATH),
     getPage(() => const MainScreenView(), MAIN_SCREEN_PATH),
     getPage(() =>  DetailScreenView(incomingId : Get.arguments), DETAIL_SCREEN_PATH),
     getPage(() => const FavoritesScreenView(), FAVORITES_SCREEN_PATH),

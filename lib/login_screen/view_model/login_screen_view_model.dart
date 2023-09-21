@@ -41,7 +41,9 @@ abstract class _LoginScreenViewModelBase with Store {
     });
 
     if (data.isNotEmpty) {
-      var userData = Users.fromJson(data[0]);
+      //intéressant
+      //var userData = Users.fromJson(data[0]);
+      var userData = Users.fromJson(data as Map<String,dynamic>);
       user = userData;
       return user;
     } else {
