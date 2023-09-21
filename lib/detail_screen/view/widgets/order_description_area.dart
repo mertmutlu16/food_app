@@ -19,17 +19,17 @@ class _OrderDescriptionAreaState extends State<OrderDescriptionArea> {
 
   final detailScreenViewModel = locator<DetailScreenViewModel>();
 
-  bool isInitDescription = true;
+  bool isInit = true;
 
   @override
   void didChangeDependencies() async {
-    if (isInitDescription) {
+    if (isInit) {
       await detailScreenViewModel
           .getSingleFood(widget.incomingId)
           .catchError((err) {
         debugPrint(err);
       });
-      isInitDescription = false;
+      isInit = false;
       setState(() {});
     }
     super.didChangeDependencies();
@@ -42,7 +42,7 @@ class _OrderDescriptionAreaState extends State<OrderDescriptionArea> {
     return SizedBox(
       height: 43.001.h,
       child: Visibility(
-        visible: !isInitDescription,
+        visible: !isInit,
         replacement: const Center(
           child:  CircularProgressIndicator(
             valueColor:
