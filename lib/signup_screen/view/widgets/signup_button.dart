@@ -19,7 +19,6 @@ class _SignupButtonState extends State<SignupButton> {
   TextEditingController fullnameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  
 
   @override
   void didChangeDependencies() {
@@ -30,14 +29,14 @@ class _SignupButtonState extends State<SignupButton> {
     super.didChangeDependencies();
   }
 
-   void _showEmptyFieldsAlert() {
+  void _showEmptyFieldsAlert() {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: const Text('Warning'),
-          content:
-              const Text("Username,Email and Password fields cannot be left blank."),
+          content: const Text(
+              "Username,Email and Password fields cannot be left blank."),
           actions: <Widget>[
             TextButton(
               child: const Text('OK'),
@@ -50,22 +49,39 @@ class _SignupButtonState extends State<SignupButton> {
       },
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (_) {
       return Column(
         children: [
+          
           Padding(
-            padding: EdgeInsets.only(top: 31.5.h, bottom: 2.5.h),
+            padding: EdgeInsets.only(top:3.h),
+            child: Text(
+              "Already have an account ?",
+              style: TextStyle(fontSize: 14.sp),
+            ),
+          ),
+          GestureDetector(
+              onTap: () {
+                Get.toNamed(AppRoutes.LOGIN_SCREEN_PATH);
+              },
+              child: Text(
+                " Log in",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),
+              )),
+          Padding(
+            padding: EdgeInsets.only(top: 21.h, bottom: 2.5.h),
             child: ElevatedButton(
               onPressed: () async {
                 if (fullnameController.text.isNotEmpty &&
                     emailController.text.isNotEmpty &&
                     passwordController.text.isNotEmpty) {
-                  await signupScreenViewModel
-                      .createUser(fullnameController.text.toString(),
-                          emailController.text.toString(),
-                          passwordController.text.toString());
+                  await signupScreenViewModel.createUser(
+                      fullnameController.text.toString(),
+                      emailController.text.toString(),
+                      passwordController.text.toString());
                   Get.offNamedUntil(
                       AppRoutes.LOGIN_SCREEN_PATH, (route) => false);
                 } else {

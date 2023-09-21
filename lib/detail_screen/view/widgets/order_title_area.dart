@@ -37,8 +37,9 @@ class _OrderTitleAreaState extends State<OrderTitleArea> {
 
   @override
   Widget build(BuildContext context) {
-    return Observer(builder: (_) {
-      return Visibility(
+    return SizedBox(
+      height: 21.179.h,
+      child: Visibility(
         visible: !isInit,
         replacement: const Center(
           child: CircularProgressIndicator(
@@ -46,57 +47,60 @@ class _OrderTitleAreaState extends State<OrderTitleArea> {
                 AlwaysStoppedAnimation<Color>(Color.fromARGB(1000, 241, 0, 77)),
           ),
         ),
-        child: Padding(
-          padding: EdgeInsets.all(1.h),
-          child: Column(
-            children: [
-              Text(
-                detailScreenViewModel.singleFood?.foodName ?? '-',
-                style:
-                    const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: 1.h,
-              ),
-              Text(
-                detailScreenViewModel.singleFood?.ingredients ?? '-',
-                style: const TextStyle(fontSize: 14),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 2.h, bottom: 2.h),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.star,
-                          color: Color.fromARGB(1000, 244, 0, 77),
-                        ),
-                        SizedBox(
-                          width: 2.w,
-                        ),
-                        Text(
-                          "${detailScreenViewModel.singleFood!.rating}",
-                        ),
-                      ],
-                    ),
-                    ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(1000, 241, 0, 77),
-                          foregroundColor: Colors.white,
-                          elevation: 10,
-                        ),
-                        child: const Text("Sepete Ekle")),
-                  ],
+        child: Observer(
+          builder: (_) {
+          return Padding(
+            padding: EdgeInsets.all(1.h),
+            child: Column(
+              children: [
+                Text(
+                  detailScreenViewModel.singleFood?.foodName ?? '-',
+                  style:
+                      const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
-              ),
-            ],
-          ),
+                SizedBox(
+                  height: 1.h,
+                ),
+                Text(
+                  detailScreenViewModel.singleFood?.ingredients ?? '-',
+                  style: const TextStyle(fontSize: 14),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 2.h, bottom: 2.h),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Row(
+                        children: [
+                          const Icon(
+                            Icons.star,
+                            color: Color.fromARGB(1000, 244, 0, 77),
+                          ),
+                          SizedBox(
+                            width: 2.w,
+                          ),
+                          Text(
+                            "${detailScreenViewModel.singleFood!.rating}",
+                          ),
+                        ],
+                      ),
+                      ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromARGB(1000, 241, 0, 77),
+                            foregroundColor: Colors.white,
+                            elevation: 10,
+                          ),
+                          child: const Text("Sepete Ekle")),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );}
         ),
-      );
-    });
+      ),
+    );
   }
 }

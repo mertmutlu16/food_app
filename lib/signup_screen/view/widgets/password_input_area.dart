@@ -15,6 +15,13 @@ class PasswordInputArea extends StatefulWidget {
 class _PasswordInputAreaState extends State<PasswordInputArea> {
   final signupScreenViewModel = locator<SignupScreenViewModel>();
 
+   bool isObscured = false;
+  void toggleObscurePassword() {
+    setState(() {
+      isObscured = !isObscured;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (_) {
@@ -24,11 +31,18 @@ class _PasswordInputAreaState extends State<PasswordInputArea> {
             padding: EdgeInsets.only(top: 2.h),
             child: TextField(
               controller: signupScreenViewModel.passwordController,
-              decoration: const InputDecoration(
+              obscureText: isObscured ? false : true,
+              decoration:  InputDecoration(
                 labelText: "Password",
-                border: OutlineInputBorder(
+                border: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.black54),
                 ),
+                 suffixIcon: GestureDetector(
+                onTap: toggleObscurePassword,
+                child: isObscured
+                    ? const Icon(Icons.visibility)
+                    : const Icon(Icons.visibility_off),
+              ),
               ),
             ),
           )

@@ -19,17 +19,17 @@ class _OrderDescriptionAreaState extends State<OrderDescriptionArea> {
 
   final detailScreenViewModel = locator<DetailScreenViewModel>();
 
-  bool isInit = true;
+  bool isInitDescription = true;
 
   @override
   void didChangeDependencies() async {
-    if (isInit) {
+    if (isInitDescription) {
       await detailScreenViewModel
           .getSingleFood(widget.incomingId)
           .catchError((err) {
         debugPrint(err);
       });
-      isInit = false;
+      isInitDescription = false;
       setState(() {});
     }
     super.didChangeDependencies();
@@ -39,101 +39,103 @@ class _OrderDescriptionAreaState extends State<OrderDescriptionArea> {
 
   @override
   Widget build(BuildContext context) {
-    return Observer(
-      builder : (_){
-
-      return Visibility(
-        visible: !isInit,
+    return SizedBox(
+      height: 43.001.h,
+      child: Visibility(
+        visible: !isInitDescription,
         replacement: const Center(
-          child: CircularProgressIndicator(
+          child:  CircularProgressIndicator(
             valueColor:
                 AlwaysStoppedAnimation<Color>(Color.fromARGB(1000, 241, 0, 77)),
           ),
         ),
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 2.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "Cook Time",
-                    style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    "Preparation Time",
-                    style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
-                  ),
-                ],
+        child: Observer(
+          builder : (_){
+          return Column(
+            children: [
+              Padding(
+                padding: EdgeInsets.only(top: 2.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      "Cook Time",
+                      style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "Preparation Time",
+                      style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(top: .7.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    "${detailScreenViewModel.singleFood!.cookTime}m",
-                    style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400),
-                  ),
-                  Text(
-                    "${detailScreenViewModel.singleFood!.servingTime}m",
-                    style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400),
-                  ),
-                ],
+              Padding(
+                padding: EdgeInsets.only(top: .7.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      "${detailScreenViewModel.singleFood!.cookTime}m",
+                      style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400),
+                    ),
+                    Text(
+                      "${detailScreenViewModel.singleFood!.servingTime}m",
+                      style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(3.h),
-              child:  Text(
-                  detailScreenViewModel.singleFood?.description ?? '-'
-                  ),
-            ),
-          
-            Padding(
-              padding: EdgeInsets.all(2.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: Ink(
-                      decoration: const ShapeDecoration(
-                        shape: CircleBorder(),
-                        color: Colors.pink,
-                      ),
-                      child: const Icon(
-                        Icons.remove,
-                        color: Colors.white,
+              Padding(
+                padding: EdgeInsets.all(3.h),
+                child:  Text(
+                    detailScreenViewModel.singleFood?.description ?? '-'
+                    ),
+              ),
+            
+              Padding(
+                padding: EdgeInsets.all(1.5.h),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {},
+                      icon: Ink(
+                        decoration: const ShapeDecoration(
+                          shape: CircleBorder(),
+                          color: Colors.pink,
+                        ),
+                        child: const Icon(
+                          Icons.remove,
+                          color: Colors.white,
+                        ),
                       ),
                     ),
-                  ),
-          
-                  const Text(
-                    "0",
-                    style: TextStyle(fontSize: 20),
-                  ), //productCount
-          
-                  IconButton(
-                    onPressed: () {},
-                    icon: Ink(
-                      decoration: const ShapeDecoration(
-                        shape: CircleBorder(),
-                        color: Colors.pink,
+            
+                     Text(
+                      "0",
+                      style: TextStyle(fontSize: 16.sp),
+                    ), //productCount
+            
+                    IconButton(
+                      onPressed: () {},
+                      icon: Ink(
+                        decoration: const ShapeDecoration(
+                          shape: CircleBorder(),
+                          color: Colors.pink,
+                        ),
+                        child: const Icon(
+                          Icons.add,
+                          color: Colors.white,
+                        ),
                       ),
-                      child: const Icon(
-                        Icons.add,
-                        color: Colors.white,
-                      ),
-                    ),
-                  )
-                ],
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          );}
         ),
-      );}
+      ),
     );
   }
 }

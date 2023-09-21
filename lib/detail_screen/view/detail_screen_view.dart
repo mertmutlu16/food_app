@@ -90,7 +90,7 @@ class _DetailScreenViewState extends State<DetailScreenView> {
               OrderTitleArea(incomingId: widget.incomingId),
               const FoodAppDivider(),
               OrderDescriptionArea(incomingId: widget.incomingId),
-              //ItemCounter(),
+              
             ],
           ),
         ],

@@ -15,6 +15,7 @@ abstract class _DetailScreenViewModelBase with Store {
   @observable
    Foods? singleFood;
 
+ 
 
    @action
     Future<Foods?> getSingleFood(int id ) async {
