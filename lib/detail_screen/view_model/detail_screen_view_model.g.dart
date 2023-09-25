@@ -33,6 +33,15 @@ mixin _$DetailScreenViewModel on _DetailScreenViewModelBase, Store {
     return _$getSingleFoodAsyncAction.run(() => super.getSingleFood(id));
   }
 
+  late final _$addFavoriteAsyncAction =
+      AsyncAction('_DetailScreenViewModelBase.addFavorite', context: context);
+
+  @override
+  Future<dynamic> addFavorite(int userId, int foodId) {
+    return _$addFavoriteAsyncAction
+        .run(() => super.addFavorite(userId, foodId));
+  }
+
   @override
   String toString() {
     return '''

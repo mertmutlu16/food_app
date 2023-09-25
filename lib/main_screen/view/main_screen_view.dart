@@ -13,16 +13,7 @@ class MainScreenView extends StatefulWidget {
   @override
   State<MainScreenView> createState() => _MainScreenViewState();
 }
- var foods = [
-    "Hamburger",
-    "Makarna",
-    "Tost",
-    "Sushi",
-    "Baklava",
-    "Tavuk Izgara",
-    "Hamburger",
-    "Makarna"
-  ];
+ 
 class _MainScreenViewState extends State<MainScreenView> {
  
 

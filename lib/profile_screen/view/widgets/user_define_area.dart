@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:food_app/utils/locator.dart';
 import 'package:sizer/sizer.dart';
+
+import '../../../login_screen/view_model/login_screen_view_model.dart';
 
 class UserDefineArea extends StatefulWidget {
   const UserDefineArea({super.key});
@@ -9,6 +13,8 @@ class UserDefineArea extends StatefulWidget {
 }
 
 class _UserDefineAreaState extends State<UserDefineArea> {
+  final loginScreenViewModel = locator<LoginScreenViewModel>();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,13 +37,16 @@ class _UserDefineAreaState extends State<UserDefineArea> {
                     backgroundImage:  const AssetImage('images/yodaProfilePic.png'),
                   ),
                 ),
-                Expanded(
-                  child: Padding(
-                    padding:  EdgeInsets.only(right:10.w),
-                    child:  Text("MERT MUTLU" , 
-                    style: TextStyle(fontSize: 15.sp),
-                    textAlign: TextAlign.center,),
-                  )),
+                Observer(
+                  builder: (_){
+                  return Expanded(
+                    child: Padding(
+                      padding:  EdgeInsets.only(right:10.w),
+                      child:  Text(loginScreenViewModel.user!.fullname, 
+                      style: TextStyle(fontSize: 15.sp),
+                      textAlign: TextAlign.center,),
+                    ));}
+                ),
               ],
             ),
           ),

@@ -39,7 +39,7 @@ class _FavoritesScreenViewState extends State<FavoritesScreenView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context),
+      appBar: buildAppBar(),
       body: buildBody(),
       bottomNavigationBar: buildBottomNavigatorBar(),
     );
@@ -47,7 +47,7 @@ class _FavoritesScreenViewState extends State<FavoritesScreenView> {
 
 
 
-  AppBar buildAppBar(BuildContext context){
+  AppBar buildAppBar( ){
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
@@ -62,11 +62,9 @@ class _FavoritesScreenViewState extends State<FavoritesScreenView> {
   }
 
   Widget buildBody(){
-    return const Column(
-      children: [
-        CardArea(),
-      ],
-    );
+    return
+     const CardArea();
+    
   }
 
   Widget buildBottomNavigatorBar() {

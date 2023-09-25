@@ -7,7 +7,10 @@ import 'package:food_app/detail_screen/view/widgets/order_title_area.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../login_screen/view_model/login_screen_view_model.dart';
+import '../../utils/locator.dart';
 import '../../utils/routes/app_routes.dart';
+import '../view_model/detail_screen_view_model.dart';
 
 
 class DetailScreenView extends StatefulWidget {
@@ -21,6 +24,12 @@ class DetailScreenView extends StatefulWidget {
 }
 
 class _DetailScreenViewState extends State<DetailScreenView> {
+
+  final detailScreenViewModel = locator<DetailScreenViewModel>();
+  final loginScreenViewModel = locator<LoginScreenViewModel>();
+
+
+
   int _selectedBottomNaviIndex = 0;
   void _onItemTapped(int index) {
     setState(() {
@@ -68,7 +77,9 @@ class _DetailScreenViewState extends State<DetailScreenView> {
         Padding(
           padding:  EdgeInsets.only(right: 1.h),
           child: IconButton(
-            onPressed: (){},
+            onPressed: () async{
+              await detailScreenViewModel.addFavorite(loginScreenViewModel.user!.id, detailScreenViewModel.singleFood!.id );
+            },
              icon: const Icon(Icons.favorite_outline),
              color: const Color.fromARGB(1000, 241, 0, 77),
              iconSize: 4.h,

@@ -40,7 +40,7 @@ class _OrderDescriptionAreaState extends State<OrderDescriptionArea> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 43.001.h,
+      height: 43.01.h,
       child: Visibility(
         visible: !isInit,
         replacement: const Center(
