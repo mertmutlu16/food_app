@@ -73,7 +73,7 @@ flutter:
     - images/splashMotobike.png
     - images/main_screen_image-removebg.png
     - images/hamburger.jpeg
-    - images/food.png
+    #- images/food.png
     - images/yodaProfilePic.png
 
   #   - images/a_dot_ham.jpeg

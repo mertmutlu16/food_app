@@ -46,10 +46,10 @@ app.*.map.json
 
 
 # Resim dosyalarınızı veya büyük dosyaları izlememek için
-*.jpg
-*.png
-*.gif
-*.jpeg
+#*.jpg
+#*.png
+#*.gif
+#*.jpeg
 
 # Bir klasörü tamamen izlememek için
-images/
+#images/
